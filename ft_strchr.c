@@ -13,7 +13,7 @@ char *ft_strchr(const char *s, int c)
         return (char *)s;
     }
 
-    return NULL;
+    return (NULL);
 }
 /*#include <stddef.h>
 #include <stdio.h>
