@@ -1,5 +1,4 @@
 #include "libft.h"
-#include <stdio.h>
 
 void    *f(unsigned int index, char* c)
 {
@@ -9,21 +8,16 @@ void    *f(unsigned int index, char* c)
         return (&c[index]);
     }
 }
-void    ft_striteri(char *s, void (*f)(unsigned int, char*))
+char    *ft_strmapi(char const *s, void (*f)(unsigned int, char))
 {
     unsigned int    i;
     char            *ptr;
 
     i = 0;
+    ptr = malloc(ft_strlen(s)) + sizeof(char) + 1;
     while(s[i] != '\0')
     {
-        ptr = f(i, s);
+        f(i, s);
         i++;
     }
-    printf("%s\n", ptr);
-}
-int main()
-{
-    ft_striteri("Hello", f);
-    return (0);
 }

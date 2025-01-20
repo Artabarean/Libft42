@@ -81,10 +81,10 @@ char    *ft_strtrim(char const *s1, char const *set)
     str[i] = '\0';
     return (str);
 }
-#include <stdio.h>
+// #include <stdio.h>
 
-int main()
-{
-    printf("%s\n", ft_strtrim("Goodbye", "ye"));
-    return (0);
-}
+// int main()
+// {
+//     printf("%s\n", ft_strtrim("Goodbye", "ye"));
+//     return (0);
+// }
