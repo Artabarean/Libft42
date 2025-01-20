@@ -6,15 +6,14 @@ void    *ft_calloc(size_t nmemb, size_t size)
     size_t  i;
 
     i = 0;
-    if(nmemb == 0 || size == 0)
-        return(NULL);
+    //if(nmemb == 0 || size == 0)
+      //  return(malloc((void *)NULL));
     ptr = malloc(nmemb * size * sizeof(int));
     if (ptr == NULL)
     {
         return (NULL);
     }
     ft_bzero(ptr, (nmemb * size));
-    printf("%ls\n", ptr);
     return (ptr);
 
 }

@@ -9,22 +9,22 @@ int	ft_atoi(const char *nptr)
 	result = 0;
 	sign = 1;
 	i = 0;
-	while(s[i] == ' ' || s[i] == '\t')
+	while(nptr[i] == ' ' || nptr[i] == '\t')
 	{
 		i++;
 	}
-	if (s[i] == '-')
+	if (nptr[i] == '-')
 	{
 		sign = -1;
 		i++;
 	}
-	else if (s[i] == '+')
+	else if (nptr[i] == '+')
 	{
 		i++;
 	}
-	while(s[i] >= '0' && s[i] <= '9')
+	while(nptr[i] >= '0' && nptr[i] <= '9')
 	{
-		result = result * 10 + (s[i] - '0');
+		result = result * 10 + (nptr[i] - '0');
 		i++;
 	}
 	return (result * sign);
