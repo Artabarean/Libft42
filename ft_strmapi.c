@@ -1,13 +1,15 @@
 #include "libft.h"
 
-char    (f)(unsigned int index, char c)
-{
-    if(c >= 'A' && c <= 'Z')
-    {
-      c = c + 32;
-    }
-    return (c);
-}
+// char    tolower(unsigned int index, char c)
+// {
+//     (void)index;
+//     if(c >= 'A' && c <= 'Z')
+//     {
+//       c = c + 32;
+//     }
+//     return (c);
+// }
+
 char    *ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
     unsigned int    i;

@@ -1,6 +1,6 @@
 #include "libft.h"
 
-int  ft_nbrcnt(int n)
+static int  ft_nbrcnt(int n)
 {
   int i;
   
@@ -12,7 +12,7 @@ int  ft_nbrcnt(int n)
   return (i);
 }
 
-char  *ft_nbrchr(int n, int lon)
+static char  *ft_nbrchr(int n, int lon)
 {
   char  *result;
   int   i;

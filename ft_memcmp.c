@@ -8,7 +8,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 
 	ptr1 = (char *)s1;
 	ptr2 = (char *)s2;
-	while (i < n && ptr[i] != '\0' && ptr2[i] != '\0')
+	while (i < n && ptr1[i] != '\0' && ptr2[i] != '\0')
 	{
 		if(ptr1[i] < ptr2[i])
 		{

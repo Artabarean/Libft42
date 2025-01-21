@@ -3,11 +3,7 @@
 void    *ft_calloc(size_t nmemb, size_t size)
 {
     int     *ptr;
-    size_t  i;
 
-    i = 0;
-    //if(nmemb == 0 || size == 0)
-      //  return(malloc((void *)NULL));
     ptr = malloc(nmemb * size * sizeof(int));
     if (ptr == NULL)
     {
@@ -15,7 +11,6 @@ void    *ft_calloc(size_t nmemb, size_t size)
     }
     ft_bzero(ptr, (nmemb * size));
     return (ptr);
-
 }
 /*int main()
 {    printf("%p\n", ft_calloc(5, 10));
