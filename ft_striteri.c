@@ -1,29 +1,26 @@
 #include "libft.h"
-#include <stdio.h>
 
-void    *f(unsigned int index, char* c)
+void    (f)(unsigned int index, char *c)
 {
-    if (c[index] != '\0')
+    if(c[index] >= 'A' && c[index] <= 'Z')
     {
-        index++;
-        return (&c[index]);
+      c[index] = c[index] + 32;
     }
 }
 void    ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
     unsigned int    i;
-    char            *ptr;
-
+    
     i = 0;
-    while(s[i] != '\0')
+    while(s[i]!= '\0')
     {
-        ptr = f(i, s);
+        f(i, s);
         i++;
     }
-    printf("%s\n", ptr);
 }
-int main()
-{
-    ft_striteri("Hello", f);
-    return (0);
-}
+// int main()
+// {
+//     char  str[] = "HELLO";
+//     ft_striteri(str, f);
+//     return (0);
+// }

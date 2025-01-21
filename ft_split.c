@@ -11,6 +11,17 @@ char    *array_creation(char *s)
     }
 
 }
+size_t ft_wrdcnt(char const *s, char c)
+{
+    size_t  i;
+
+    i = 0;
+    while(s != c && s != '\0')
+    {
+        i++;
+    }
+    return (i);
+}
 char    **ft_split(char const *s, char c)
 {
     char    *str;
@@ -25,4 +36,9 @@ char    **ft_split(char const *s, char c)
             
         }
     }
+}
+int main()
+{
+    printf("%d\n", ft_wrdcnt("helloci", 'c'));
+    return (0);
 }
