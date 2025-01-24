@@ -1,20 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: atabarea <atabarea@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/23 11:03:44 by atabarea          #+#    #+#             */
+/*   Updated: 2025/01/24 11:11:11 by atabarea         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-//#include <stddef.h>
+
 int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	char	*ptr1;
-	char	*ptr2;
+	unsigned char	*ptr1;
+	unsigned char	*ptr2;
 	size_t	i;
 
-	ptr1 = (char *)s1;
-	ptr2 = (char *)s2;
-	while (i < n && ptr1[i] != '\0' && ptr2[i] != '\0')
+	i = 0;
+	ptr1 = (unsigned char *)s1;
+	ptr2 = (unsigned char *)s2;
+	while (i < n)
 	{
-		if(ptr1[i] < ptr2[i])
-		{
-			return (ptr1[i] - ptr2[i]);
-		}
-		else if(ptr1[i] > ptr2[i])
+		if(ptr1[i] != ptr2[i])
 		{
 			return (ptr1[i] - ptr2[i]);
 		}
@@ -22,10 +31,9 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	}
 	return (0);
 }
-/*#include <stdio.h>
-int main()
-{
-	printf("el resultado de la comparativa es = %d\n", ft_memcmp("Holapapope", "HolaPapope", 10));
-		       return (0);
-}
-*/
+// #include <stdio.h>
+// int main()
+// {
+// 	printf("el resultado de la comparativa es = %d\n", ft_memcmp("\t200", "\t0", 2));
+// 	return (0);
+// }

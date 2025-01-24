@@ -1,13 +1,15 @@
 #include "libft.h"
 #include <stdio.h>
 
-size_t ft_wrdcnt(char const *s, char c)
+static size_t ft_wrdcnt(char const *s, char c)
 {
 	size_t  i;
 	size_t  count;
 
 	count = 0;
 	i = 0;
+	if (!s)
+		return (NULL);
 	while(s[i] == c)
 	  i++;
 	if (s[i] == '\0')
@@ -20,9 +22,9 @@ size_t ft_wrdcnt(char const *s, char c)
 		  count++;
 	  i++;
 	}
-	return (printf("word count: %lu\n", count), count);
+	return (count);
 }
-size_t  ft_lttrcnt(char const *s, char c)
+static size_t  ft_lttrcnt(char const *s, char c)
 {
 	size_t  i;
 
@@ -36,7 +38,7 @@ size_t  ft_lttrcnt(char const *s, char c)
 	return (i);
 }
 
-char    *ft_createstr(char const *s, char c, size_t len)
+static char    *ft_createstr(char const *s, char c, size_t len)
 {
 	size_t  i;
 	size_t  j;
@@ -59,7 +61,7 @@ char    *ft_createstr(char const *s, char c, size_t len)
 	return (aux);
 }
 
-char    **ft_split2(char c, char **str, char *aux, size_t arrcnt, size_t index)
+static char    **ft_split2(char c, char **str, char *aux, size_t arrcnt, size_t index)
 {
 	while(*aux == c)
 		aux++;
@@ -100,23 +102,30 @@ char    **ft_split(char const *s, char c)
 		return (NULL);
 	return (ft_split2(c, str, aux, arrcnt, index));
 }
+// int main()
+// {
+//     char **result;
+//     char str[] = "   Hola  mundo  este es   un  ejemplo   ";
+//     size_t i = 0;
 
-/*int main(int argc, char **argv)
-{
-	if (argc < 3)
-		return(printf("%s\n", "A la verga"), 1);
-	char	**spl = ft_split(argv[1], argv[2][0]);
-	char	**aux = spl;
-	if (!spl)
-		return(printf("%s\n", "Retorno nulo"), 1);
-	while(spl && *spl)
-	{
-		printf("%s:\n", *spl);
-		free(*spl);
-		spl++;
-	}
-	if (spl && !*spl)
-		printf("NULL\n");
-	free(aux);
-	return (0);
-}*/
+//     // Llamada a la función ft_split
+//     result = ft_split(str, ' ');
+
+//     if (result)
+//     {
+//         // Imprimir los resultados
+//         while (result[i])
+//         {
+//             printf("Palabra %zu: '%s'\n", i + 1, result[i]);
+//             free(result[i]); // No olvides liberar la memoria de cada palabra
+//             i++;
+//         }
+//         free(result); // Liberar el array de punteros
+//     }
+//     else
+//     {
+//         printf("Hubo un error al dividir la cadena.\n");
+//     }
+
+//     return 0;
+// }

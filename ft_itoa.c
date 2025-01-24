@@ -28,7 +28,7 @@ static char  *ft_nbrchr(int n, int lon)
   if (result == NULL)
     return (NULL);
   if (n == -2147483648)
-    result = "-2147483648";
+    return ("-2147483648");
   while (n >= 10)
   {
     i--;

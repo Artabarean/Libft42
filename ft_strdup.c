@@ -6,11 +6,7 @@ char	*ft_strdup(const char *s)
 	int	i;
 
 	i = 0;
-	if (s == NULL)
-	{
-		return (NULL);
-	}
-	clone = (char *)malloc(ft_strlen(s) + 1);
+	clone = (char *)malloc(ft_strlen(s) * sizeof(char) + 1);
 	if (clone == NULL)
 	{
 		return (NULL);

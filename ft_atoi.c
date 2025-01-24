@@ -9,10 +9,9 @@ int	ft_atoi(const char *nptr)
 	result = 0;
 	sign = 1;
 	i = 0;
-	while(nptr[i] == ' ' || nptr[i] == '\t')
-	{
+	while(nptr[i] == ' ' || nptr[i] == '\t' ||	nptr[i] == '\n' 
+	|| nptr[i] == '\r' || nptr[i] == '\v' || nptr[i] == '\f')
 		i++;
-	}
 	if (nptr[i] == '-')
 	{
 		sign = -1;

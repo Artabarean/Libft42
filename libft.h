@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: atabarea <atabarea@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/23 11:14:49 by atabarea          #+#    #+#             */
+/*   Updated: 2025/01/23 11:14:49 by atabarea         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LIBFT_H
 # define LIBFT_H
 
@@ -38,5 +50,8 @@ void	ft_putnbr_fd(int n, int fd);
 char    **ft_split(char const *s, char c);
 void    ft_striteri(char *s, void (*f)(unsigned int, char*));
 char    *ft_strmapi(char const *s, char (*f)(unsigned int, char));
+char    *ft_substr(char const *s, unsigned int start, size_t len);
+void	*ft_memmove(void *dest, const void *src, size_t n);
+char	*ft_strnstr(const char *upstr, const char *substr, size_t len);
 
 #endif

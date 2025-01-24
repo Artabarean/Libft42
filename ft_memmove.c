@@ -1,41 +1,51 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: atabarea <atabarea@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/23 11:13:55 by atabarea          #+#    #+#             */
+/*   Updated: 2025/01/23 12:13:53 by atabarea         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-//#include <stddef.h>
+
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t		i;
-	unsigned char	*ptr;
-	unsigned char	*ptr2;
+	unsigned char	*ptrdst;
+	unsigned char	*ptrsrc;
 	
-	ptr = (unsigned char *)dest;
-	ptr2 = (unsigned char *)src;
-	i = 0;
-	while(i < n)
+	ptrdst = (unsigned char *)dest;
+	ptrsrc = (unsigned char *)src;
+	if (src < dest)
 	{
-		ptr[i] = ptr2[i];
-		i++;
+		ptrdst = ptrdst + (n -1);
+		ptrsrc = ptrsrc + (n - 1);
+		while(n > 0)
+		{
+			*ptrdst-- = *ptrsrc--;
+			n--;
+		}
 	}
-	ptr[i] = '\0';
-	i = 0;
-	while(ptr2[i] != '\0')
+	else if (dest < src)
 	{
-		ptr2[i] = '\0';
-		i++;
+		while(n > 0)
+		{
+			*ptrdst++ = *ptrsrc++;
+			n--;
+		}
 	}
-	src = ptr2;
-	dest = ptr;
 	return(dest);
 }
-/*
-#include <stdio.h>
-#include <stddef.h>
-int	main(void)
-{
-	unsigned char s1[5] = "";
-	unsigned char s2[5] = "hola";
-
-	printf("%s\n", s1);
-	ft_memmove(s1, s2, 4);
-	printf("%s\n", s1);
-	printf("%s\n", s2);
-	return (0);
-}*/
+// #include <stdio.h>
+// #include <stddef.h>
+// int    main(void)
+// {
+//   char dst[] = "Holaaaaa";
+//   char src[] = "Holaa";
+//   printf("%p\n", ft_memmove(dst, src, sizeof(dst)));
+//   printf("%s\n", dst);
+//   return (0);
+// }

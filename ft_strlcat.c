@@ -2,41 +2,34 @@
 
 size_t ft_strlcat(char *dst, const char *src, size_t size)
 {
-    int 	i;
-    size_t	j;
+    size_t	dst_len;
+    size_t	src_len;
+    size_t	i;
 
-    j = 0;
-    i = 0;
-    while(dst[i] != '\0')
+    if (!dst || !src)
+        return (0);
+    dst_len = ft_strlen(dst);
+    src_len = ft_strlen(src);
+    if (size <= dst_len)
+        return (size + src_len);
+    i = dst_len;
+    while (i < size - 1 && *src)
 	{
-		i++;
-	}
-    i--;
-    while(j < (size - 1) && src[j] != '\0')
-    {
-        dst[i] = src[j];
+        dst[i] = *src;
         i++;
-	j++;
-    }
-    dst[i] = '\0';
-    j = 0;
-    while(src[j] != '\0')
-    {
-        j++;
-    }
-    return(j);
+        src++;
+	}
+	dst[i] = '\0';
+    return (dst_len + src_len);
 }
-/*#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
-int	main()
-{
-	const char *src = strdup("abc");
-	char	*dst = strdup("abcdefghj");
-	size_t	size = 2;
-	printf("%s\n", dst);
-	printf("%li\n", ft_strlcat(dst, src, size));
-	printf("%s\n", dst);
-	free(dst);
-	return (0);
-}*/
+// #include <string.h>
+// #include <stdio.h>
+// #include <stdlib.h>
+// int	main()
+// {
+// 	char	*dest;
+// 	memset(dest, 'r', 15);
+//     printf("%li\n", ft_strlcat(dest, "lorem ipsum dolor sit amet", 5));
+//     write(1, "\n", 1);
+//     write(1, dest, 15);
+// }
