@@ -6,7 +6,7 @@
 /*   By: atabarea <atabarea@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:12:08 by atabarea          #+#    #+#             */
-/*   Updated: 2025/01/24 10:25:40 by atabarea         ###   ########.fr       */
+/*   Updated: 2025/01/24 15:50:23 by atabarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,19 @@
 char    *ft_strrchr(const char *s, int c)
 {
     char    *s1;
+	int		i;
 
+	i = ft_strlen(s);
     if (!s)
         return (NULL);
     s1 = (char*)s;
-    while (*s != '\0')
-    {
-        if (*s == (char)c)
-        {
-          s1 = (char*)s;
-          s++;
-        }
-        if (*s != (char)c)
-          s++;
-        if (*s == (char)c && (char)c == '\0')
-          s1 = (char*)s;
-        if (*s == '\0' && *s + 1 != '\0')
-          s++;
-    }
-    if (*s1 == (char)c)
-        return (s1);
-    return (NULL);
+    while(i >= 0)
+	{
+		if (s1[i] == (char)c)
+			return (&s1[i]);
+		i--;
+	}
+	return (NULL);
 }
 // #include <stdio.h>
 // int main()

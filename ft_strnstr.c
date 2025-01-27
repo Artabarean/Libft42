@@ -6,42 +6,34 @@
 /*   By: atabarea <atabarea@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 11:14:43 by atabarea          #+#    #+#             */
-/*   Updated: 2025/01/24 12:25:54 by atabarea         ###   ########.fr       */
+/*   Updated: 2025/01/27 10:35:28 by atabarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char    *ft_strnstr(const char *upstr, const char *substr, size_t len)
+char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-    char *str;
+	size_t i;
+	size_t j;
 
-    str = (char*)upstr;
-    if (*substr == '\0')
-        return (str);
-    while(len > 0 && *upstr != '\0')
-    {
-        while(len > 0 && *upstr != '\0')
-        {
-          if (*substr == *upstr && *substr + 1 != '\0')
-        	{
-				substr++;
-				if (*substr == *upstr)
-					str = (char*)upstr;
-			}
-          upstr++;
-          len--;
-        }
-        if (*upstr == '\0' || len == 0)
-            return (str);
-        if (*upstr != *substr && len > 0)
-        {
-            upstr++;
-            str++;
-            len--;
-        }
-    }
-    return (NULL);
+	i = 0;
+	if (needle[i]  == '\0')
+		return ((char *)haystack);
+	while (haystack[i])
+	{
+		j = 0;
+		while (haystack[i + j] == needle[j] && (i + j) < len)
+		{
+			if (haystack[i + j] == '\0' && needle[j] == '\0')
+				return ((char *)haystack + i);
+			j++;
+		}
+		if (needle[j] == '\0')
+			return ((char *)haystack + i);
+		i++;
+	}
+	return (0);
 }
 /*int main()
 {

@@ -13,15 +13,9 @@ void    *ft_memcpy(void *dest, const void *src, size_t n)
         }
         return (dest);
 }
-
 // #include <stdio.h>
 // int	main()
-// {
-// 	unsigned char	s1[5] = "hola";
-// 	unsigned char	s2[5] = "";
-	
-// 	printf("%s\n", s2);
-// 	ft_memcpy(s2, s1, 5);
-// 	printf("%s\n", s2);
+// {	
+// 	printf("%p\n", ft_memcpy(((void*)0), ((void*)0), 5));
 // 	return (0);
 // }

@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: atabarea <atabarea@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/27 10:15:21 by atabarea          #+#    #+#             */
+/*   Updated: 2025/01/27 10:15:22 by atabarea         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 void    *ft_calloc(size_t nmemb, size_t size)
 {
-    int     *ptr;
+    char     *ptr;
 
-    ptr = malloc(nmemb * size * sizeof(int));
+    ptr = malloc(nmemb * size * sizeof(char));
     if (ptr == NULL)
     {
         return (NULL);

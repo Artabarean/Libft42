@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: atabarea <atabarea@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/27 10:15:09 by atabarea          #+#    #+#             */
+/*   Updated: 2025/01/27 10:15:10 by atabarea         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-#include <stdio.h>
 
 static size_t ft_wrdcnt(char const *s, char c)
 {
@@ -24,6 +35,7 @@ static size_t ft_wrdcnt(char const *s, char c)
 	}
 	return (count);
 }
+
 static size_t  ft_lttrcnt(char const *s, char c)
 {
 	size_t  i;
@@ -61,8 +73,11 @@ static char    *ft_createstr(char const *s, char c, size_t len)
 	return (aux);
 }
 
-static char    **ft_split2(char c, char **str, char *aux, size_t arrcnt, size_t index)
+static char    **ft_split2(char c, char **str, char *aux, size_t arrcnt)
 {
+	size_t	index;
+
+	index = 0;
 	while(*aux == c)
 		aux++;
 	while(arrcnt > 0)
@@ -90,9 +105,7 @@ char    **ft_split(char const *s, char c)
 	char    **str;
 	char    *aux;
 	size_t  arrcnt;
-	size_t  index;
-	
-	index = 0;
+
 	arrcnt = ft_wrdcnt(s, c);
 	if (s == NULL)
 	  return (NULL);
@@ -100,7 +113,7 @@ char    **ft_split(char const *s, char c)
 	str = (char **)ft_calloc((arrcnt + 1), sizeof(char *));
 	if (str == NULL)
 		return (NULL);
-	return (ft_split2(c, str, aux, arrcnt, index));
+	return (ft_split2(c, str, aux, arrcnt));
 }
 // int main()
 // {

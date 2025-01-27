@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: atabarea <atabarea@student.42madrid.com    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/27 10:21:55 by atabarea          #+#    #+#             */
+/*   Updated: 2025/01/27 10:42:31 by atabarea         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 static int  ft_nbrcnt(int n)
@@ -27,8 +39,6 @@ static char  *ft_nbrchr(int n, int lon)
   i = lon;
   if (result == NULL)
     return (NULL);
-  if (n == -2147483648)
-    return ("-2147483648");
   while (n >= 10)
   {
     i--;
@@ -54,6 +64,8 @@ char  *ft_itoa(int n)
   strl = malloc(sizeof(char) * (len + 1 + i));
   if (n < 0)
     strl[i] = '-';
+	if (n == -2147483648)
+		return (strl = "-2147483648");
   strl = ft_nbrchr(n, len);
   return (strl);
 }
