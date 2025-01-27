@@ -6,7 +6,7 @@
 /*   By: atabarea <atabarea@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 11:03:32 by atabarea          #+#    #+#             */
-/*   Updated: 2025/01/27 10:19:44 by atabarea         ###   ########.fr       */
+/*   Updated: 2025/01/27 11:41:28 by atabarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,14 @@ void    *ft_memchr(const void *s, int c, size_t n)
     p = (const unsigned char *)s;
     cr = (unsigned char)c;
     i = 0;
-    while (i < n && p[i])
+    while (i < n)
     {
         if (p[i] == cr)
         {
-            return ((void *)&p[i]);
+            return ((const void *)&p[i]);
         }
         i++;
     }
-	if (cr == '\0' && p[i] == cr)
-		return ((void *)&p[i]);
     return (NULL);
 }
 // #include <stdio.h>
