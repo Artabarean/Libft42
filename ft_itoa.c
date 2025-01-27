@@ -6,7 +6,7 @@
 /*   By: atabarea <atabarea@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:21:55 by atabarea          #+#    #+#             */
-/*   Updated: 2025/01/27 10:42:31 by atabarea         ###   ########.fr       */
+/*   Updated: 2025/01/27 17:20:10 by atabarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,9 @@ char  *ft_itoa(int n)
   if (n < 0)
     i++;
   strl = malloc(sizeof(char) * (len + 1 + i));
+  if (!strl)
+	free(strl);
+	return (NULL);
   if (n < 0)
     strl[i] = '-';
 	if (n == -2147483648)

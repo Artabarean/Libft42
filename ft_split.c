@@ -6,7 +6,7 @@
 /*   By: atabarea <atabarea@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:15:09 by atabarea          #+#    #+#             */
-/*   Updated: 2025/01/27 12:26:14 by atabarea         ###   ########.fr       */
+/*   Updated: 2025/01/27 17:14:36 by atabarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,33 +21,32 @@ static	size_t	ft_wrdcnt(char const *s, char c)
 	i = 0;
 	if (!s)
 		return (0);
-	while (s[i] == c)
-		i++;
-	if (s[i] == '\0' && c != '\0')
-		return (0);
 	while (s[i])
 	{
-		if (s[i] != c && s[i + 1] == c)
-			count++;
-		if (s[i + 1] == '\0' && s[i] != c)
+		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
 			count++;
 		i++;
 	}
-	return (count);
+	return (count + 1);
 }
 
 static	size_t	ft_lttrcnt(char const *s, char c)
 {
 	size_t	i;
+	size_t	count;
 
 	i = 0;
+	count = 0;
 	if (!s)
 		return (0);
 	while (s[i] == c)
 		i++;
-	while (s[i] != '\0' && s[i] != c)
+	while (s[i] && s[i] != c)
+	{
 		i++;
-	return (i);
+		count++;
+	}
+	return (count);
 }
 
 static	char	*ft_createstr(char const *s, char c, size_t len)
@@ -58,12 +57,10 @@ static	char	*ft_createstr(char const *s, char c, size_t len)
 
 	j = 0;
 	i = 0;
-	if (s[i] == c)
-		i++;
-	aux = malloc(sizeof(char) * (len + 1));
+	aux = ft_calloc((len + 1), sizeof(char));
 	if (!aux)
 		return (NULL);
-	while (s[i] != '\0' && s[i] != c)
+	while (s[i] && i < len && s[i] != c)
 	{
 		aux[j] = s[i];
 		i++;
@@ -78,10 +75,12 @@ static	char	**ft_split2(char c, char **str, char *aux, size_t arrcnt)
 	size_t	index;
 
 	index = 0;
-	while (*aux == c)
-		aux++;
 	while (arrcnt > 0)
 	{
+		while (*aux == c)
+			aux++;
+		if (*aux == '\0')
+			break ;
 		str[index] = ft_createstr(aux, c, ft_lttrcnt((const char *)aux, c));
 		if (!str[index])
 		{
@@ -90,13 +89,13 @@ static	char	**ft_split2(char c, char **str, char *aux, size_t arrcnt)
 			free(str);
 			return (NULL);
 		}
-		while (*aux != c && *aux != '\0')
-			aux++;
+		aux += ft_lttrcnt((const char *)aux, c);
 		while (*aux == c)
 			aux++;
 		index++;
 		arrcnt--;
 	}
+	str[index] = NULL;
 	return (str);
 }
 
@@ -109,16 +108,19 @@ char	**ft_split(char const *s, char c)
 	if (!s)
 		return (NULL);
 	arrcnt = ft_wrdcnt(s, c);
+	if (arrcnt == 0)
+		return (NULL);
 	aux = (char *)s;
-	str = (char **)malloc((arrcnt) * sizeof(char *));
+	str = (char **)ft_calloc((arrcnt + 1), sizeof(char *));
 	if (!str)
 		return (NULL);
 	return (ft_split2(c, str, aux, arrcnt));
 }
+// #include <stdio.h>
 // int main()
 // {
 //     char **result;
-//     char str[] = "   Hola  mundo  este es   un  ejemplo   ";
+//     char str[] = "  hola esto es   un k ebab ";
 //     size_t i = 0;
 //     result = ft_split(str, ' ');
 //     if (result)
@@ -133,7 +135,7 @@ char	**ft_split(char const *s, char c)
 //     }
 //     else
 //     {
-//         printf("An error has ocurred".\n");
+//         printf("An error has ocurred.\n");
 //     }
 //     return 0;
-// }
+//}

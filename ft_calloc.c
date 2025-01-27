@@ -6,23 +6,23 @@
 /*   By: atabarea <atabarea@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:15:21 by atabarea          #+#    #+#             */
-/*   Updated: 2025/01/27 10:15:22 by atabarea         ###   ########.fr       */
+/*   Updated: 2025/01/27 17:09:34 by atabarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void    *ft_calloc(size_t nmemb, size_t size)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-    char     *ptr;
+	char	*ptr;
 
-    ptr = malloc(nmemb * size * sizeof(char));
-    if (ptr == NULL)
-    {
-        return (NULL);
-    }
-    ft_bzero(ptr, (nmemb * size));
-    return (ptr);
+	ptr = malloc(nmemb * size * sizeof(char));
+	if (ptr == NULL)
+	{
+		return (NULL);
+	}
+	ft_bzero(ptr, (nmemb * size));
+	return (ptr);
 }
 /*int main()
 {    printf("%p\n", ft_calloc(5, 10));
