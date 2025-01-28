@@ -17,15 +17,15 @@ char	*ft_strchr(const char *s, int c)
 	int	i;
 
 	i = 0;
-    while (s[i])
+	while (s[i])
 	{
-        if (s[i] == (char)c)
-            return (char *)&s[i];
-        i++;
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
+		i++;
 	}
 	if ((char)c == '\0' && s[i] == (char)c)
 		return ((char *)&s[i]);
-    return (NULL);
+	return (NULL);
 }
 // #include <stddef.h>
 // #include <stdio.h>
@@ -39,5 +39,5 @@ char	*ft_strchr(const char *s, int c)
 //     } else {
 //         printf("Character '%c' not found\n", c);
 //     }
-//     return 0;
+//     return (0);
 // }

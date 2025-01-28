@@ -19,10 +19,10 @@
 //       c[index] = c[index] + 32;
 //     }
 // }
-void    ft_striteri(char *s, void (*f)(unsigned int, char*))
+void	ft_striteri(char *s, void (*f)(unsigned int, char *))
 {
-	int		i;
-	int		i2;
+	int	i;
+	int	i2;
 
 	i = 0;
 	i2 = 0;

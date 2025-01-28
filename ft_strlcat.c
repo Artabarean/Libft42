@@ -35,7 +35,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 // #include <string.h>
 // #include <stdio.h>
 // #include <stdlib.h>
-// int	main()
+// int	main(void)
 // {
 // 	char	*dest;
 // 	memset(dest, 'r', 15);

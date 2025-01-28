@@ -39,6 +39,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 }
 /*int main()
 {
-    printf("%s\n", ft_substr("a", 3, 10));
-    return (0);
+	printf("%s\n", ft_substr("a", 3, 10));
+	return (0);
 }*/

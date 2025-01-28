@@ -21,8 +21,8 @@ int	ft_atoi(const char *nptr)
 	result = 0;
 	sign = 1;
 	i = 0;
-	while(nptr[i] == ' ' || nptr[i] == '\t' ||	nptr[i] == '\n' 
-	|| nptr[i] == '\r' || nptr[i] == '\v' || nptr[i] == '\f')
+	while (nptr[i] == ' ' || nptr[i] == '\t' || nptr[i] == '\n'
+		|| nptr[i] == '\r' || nptr[i] == '\v' || nptr[i] == '\f')
 		i++;
 	if (nptr[i] == '-')
 	{
@@ -33,7 +33,7 @@ int	ft_atoi(const char *nptr)
 	{
 		i++;
 	}
-	while(nptr[i] >= '0' && nptr[i] <= '9')
+	while (nptr[i] >= '0' && nptr[i] <= '9')
 	{
 		result = result * 10 + (nptr[i] - '0');
 		i++;
@@ -42,10 +42,11 @@ int	ft_atoi(const char *nptr)
 }
 /*
 #include <stdio.h>
-int	main()
+
+int	main(void)
 {
 	const char *string = "	123";
-	
+
 	printf("%d\n", ft_atoi(string));
 	return (0);
 }*/

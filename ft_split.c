@@ -6,16 +6,16 @@
 /*   By: atabarea <atabarea@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:15:09 by atabarea          #+#    #+#             */
-/*   Updated: 2025/01/28 13:03:59 by atabarea         ###   ########.fr       */
+/*   Updated: 2025/01/28 15:48:32 by atabarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static	size_t	ft_wrdcnt(char const *s, char c)
+static size_t	ft_wrdcnt(char const *s, char c)
 {
-	size_t	i;
 	size_t	count;
+	size_t	i;
 
 	count = 0;
 	i = 0;
@@ -23,106 +23,75 @@ static	size_t	ft_wrdcnt(char const *s, char c)
 		return (0);
 	while (s[i])
 	{
-		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
+		if (s[i] != c && (!s[i + 1] || s[i + 1] == c))
 			count++;
 		i++;
 	}
 	return (count);
 }
 
-static	size_t	ft_lttrcnt(char const *s, char c)
+static size_t	ft_lttrcnt(char const *s, char c)
 {
-	size_t	i;
 	size_t	count;
 
-	i = 0;
 	count = 0;
-	if (!s)
-		return (0);
-	while (s[i] == c)
-		i++;
-	while (s[i] && s[i] != c)
-	{
-		i++;
+	while (s[count] && s[count] != c)
 		count++;
-	}
 	return (count);
 }
 
-static	char	*ft_createstr(char const *s, char c, size_t len)
+static char	*ft_createstr(char const *s, char c, size_t len)
 {
+	char	*str;
 	size_t	i;
-	char	*aux;
 
-	i = 0;
-	aux = ft_calloc(len + 1, sizeof(char));
-	if (!aux)
+	str = ft_calloc(len + 1, sizeof(char));
+	if (!str)
 		return (NULL);
-	while (s[i] != '\0' && i < len && s[i] != c)
+	i = 0;
+	while (i < len && s[i] && s[i] != c)
 	{
-		aux[i] = s[i];
+		str[i] = s[i];
 		i++;
 	}
-	aux[i] = '\0';
-	return (aux);
+	return (str);
 }
 
-static	char	**ft_split_stuff(char c, char **str, char *aux, size_t arrcnt)
+static char	**ft_free_array(char **liberated, size_t size)
 {
-	size_t	index;
-
-	index = 0;
-	while (arrcnt > 0)
+	while (size)
 	{
-		while (*aux == c)
-			aux++;
-		if (*aux == '\0')
-			break ;
-		str[index] = ft_createstr(aux, c, ft_lttrcnt((const char *)aux, c));
-		if (!str[index])
-		{
-			while (index > 0)
-				free(str[--index]);
-			free(str);
-			return (NULL);
-		}
-		aux += ft_lttrcnt((const char *)aux, c);
-		while (*aux == c)
-			aux++;
-		index++;
-		arrcnt--;
+		free(liberated[size]);
+		size--;
 	}
-	str[index] = NULL;
-	return (str);
+	free(liberated);
+	return (liberated);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	char	**str;
-	char	*aux;
-	size_t	arrcnt;
+	char		**result;
+	char const	*ptr;
+	size_t		i;
 
-	if (c == '\0')
-	{
-		str = ft_calloc(2, sizeof(char *));
-		if (!str)
-			return (NULL);
-		if (s[0] == '\0')
-			str[0] = NULL;
-		str[0] = ft_strdup(s);
-		return (str);
-	}
-	arrcnt = ft_wrdcnt(s, c);
-	if (arrcnt == 0)
-	{
-		str = ft_calloc(1, sizeof(char *));
-		return (str);
-	}
-	aux = (char *)s;
-	str = (char **)ft_calloc((arrcnt + 1), sizeof(char *));
-	if (!str)
+	if (!s)
 		return (NULL);
-	return (ft_split_stuff(c, str, aux, arrcnt));
+	result = ft_calloc(ft_wrdcnt(s, c) + 1, sizeof(char *));
+	if (!result)
+		return (NULL);
+	i = 0;
+	ptr = s;
+	while (i < ft_wrdcnt(s, c))
+	{
+		while (*ptr == c)
+			ptr++;
+		result[i] = ft_createstr(ptr, c, ft_lttrcnt(ptr, c));
+		if (!result[i])
+			return (ft_free_array(result, i), NULL);
+		ptr += ft_lttrcnt(ptr, c);
+		i++;
+	}
+	return (result);
 }
 // #include <stdio.h>
 // int main()
@@ -145,5 +114,5 @@ char	**ft_split(char const *s, char c)
 //     {
 //         printf("An error has ocurred.\n");
 //     }
-//     return 0;
+//     return (0);
 //}

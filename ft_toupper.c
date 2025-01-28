@@ -21,7 +21,7 @@ int	ft_toupper(int c)
 	return (c);
 }
 /*#include <stdio.h>
-int	main()
+int	main(void)
 {
 	int	c;
 

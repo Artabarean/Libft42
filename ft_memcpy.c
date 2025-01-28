@@ -27,8 +27,8 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 	return (dest);
 }
 // #include <stdio.h>
-// int	main()
-// {	
+// int	main(void)
+// {
 // 	printf("%p\n", ft_memcpy(((void*)0), ((void*)0), 5));
 // 	return (0);
 // }

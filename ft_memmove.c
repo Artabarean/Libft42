@@ -16,14 +16,14 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 {
 	unsigned char	*ptrdst;
 	unsigned char	*ptrsrc;
-	
+
 	ptrdst = (unsigned char *)dest;
 	ptrsrc = (unsigned char *)src;
 	if (src < dest)
 	{
 		ptrdst = ptrdst + (n - 1);
 		ptrsrc = ptrsrc + (n - 1);
-		while(n > 0)
+		while (n > 0)
 		{
 			*ptrdst-- = *ptrsrc--;
 			n--;
@@ -31,13 +31,13 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	}
 	else if (dest < src)
 	{
-		while(n > 0)
+		while (n > 0)
 		{
 			*ptrdst++ = *ptrsrc++;
 			n--;
 		}
 	}
-	return(dest);
+	return (dest);
 }
 // #include <stdio.h>
 // #include <stddef.h>

@@ -6,7 +6,7 @@
 /*   By: atabarea <atabarea@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:21:55 by atabarea          #+#    #+#             */
-/*   Updated: 2025/01/28 10:53:11 by atabarea         ###   ########.fr       */
+/*   Updated: 2025/01/28 15:08:28 by atabarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,11 @@ static int	ft_nbrcnt(int n)
 	i = 1;
 	if (n < 0)
 		i++;
-	while (n /= 10)
+	while (n > 10)
+	{
+		n /= 10;
 		i++;
+	}
 	return (i);
 }
 
@@ -53,21 +56,9 @@ char	*ft_itoa_int_min(int n)
 {
 	char	*str;
 
-	str = (char *)malloc(sizeof(char) * 12);
+	str = ft_strdup("-2147483648");
 	if (!str)
 		return (NULL);
-	str[0] = '-';
-	str[1] = '2';
-	str[2] = '1';
-	str[3] = '4';
-	str[4] = '7';
-	str[5] = '4';
-	str[6] = '8';
-	str[7] = '3';
-	str[8] = '6';
-	str[9] = '4';
-	str[10] = '8';
-	str[11] = '\0';
 	return (str);
 }
 

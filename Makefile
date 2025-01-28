@@ -13,3 +13,6 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+format:
+	c_formatter_42 *.c

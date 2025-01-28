@@ -12,16 +12,16 @@
 
 #include "libft.h"
 
-char    *ft_strrchr(const char *s, int c)
+char	*ft_strrchr(const char *s, int c)
 {
-    char    *s1;
+	char	*s1;
 	int		i;
 
 	i = ft_strlen(s);
-    if (!s)
-        return (NULL);
-    s1 = (char*)s;
-    while(i >= 0)
+	if (!s)
+		return (NULL);
+	s1 = (char *)s;
+	while (i >= 0)
 	{
 		if (s1[i] == (char)c)
 			return (&s1[i]);
@@ -40,5 +40,5 @@ char    *ft_strrchr(const char *s, int c)
 //     } else {
 //         printf("Character '%c' not found\n", c);
 //     }
-//     return 0;
+//     return (0);
 // }

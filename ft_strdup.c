@@ -15,7 +15,7 @@
 char	*ft_strdup(const char *s)
 {
 	char	*clone;
-	int	i;
+	int		i;
 
 	i = 0;
 	clone = (char *)malloc(ft_strlen(s) * sizeof(char) + 1);
@@ -23,7 +23,7 @@ char	*ft_strdup(const char *s)
 	{
 		return (NULL);
 	}
-	while(*s != '\0')
+	while (*s != '\0')
 	{
 		clone[i] = *s;
 		s++;
@@ -33,7 +33,7 @@ char	*ft_strdup(const char *s)
 	return (clone);
 }
 /*#include <stdio.h>
-int main()
+int	main(void)
 {
 	printf("%s\n", ft_strdup("Hola"));
 	return (0);
