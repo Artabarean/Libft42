@@ -6,7 +6,7 @@
 /*   By: atabarea <atabarea@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:15:09 by atabarea          #+#    #+#             */
-/*   Updated: 2025/01/27 17:14:36 by atabarea         ###   ########.fr       */
+/*   Updated: 2025/01/28 13:03:59 by atabarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static	size_t	ft_wrdcnt(char const *s, char c)
 			count++;
 		i++;
 	}
-	return (count + 1);
+	return (count);
 }
 
 static	size_t	ft_lttrcnt(char const *s, char c)
@@ -52,25 +52,22 @@ static	size_t	ft_lttrcnt(char const *s, char c)
 static	char	*ft_createstr(char const *s, char c, size_t len)
 {
 	size_t	i;
-	size_t	j;
 	char	*aux;
 
-	j = 0;
 	i = 0;
-	aux = ft_calloc((len + 1), sizeof(char));
+	aux = ft_calloc(len + 1, sizeof(char));
 	if (!aux)
 		return (NULL);
-	while (s[i] && i < len && s[i] != c)
+	while (s[i] != '\0' && i < len && s[i] != c)
 	{
-		aux[j] = s[i];
+		aux[i] = s[i];
 		i++;
-		j++;
 	}
-	aux[j] = '\0';
+	aux[i] = '\0';
 	return (aux);
 }
 
-static	char	**ft_split2(char c, char **str, char *aux, size_t arrcnt)
+static	char	**ft_split_stuff(char c, char **str, char *aux, size_t arrcnt)
 {
 	size_t	index;
 
@@ -105,16 +102,27 @@ char	**ft_split(char const *s, char c)
 	char	*aux;
 	size_t	arrcnt;
 
-	if (!s)
-		return (NULL);
+	if (c == '\0')
+	{
+		str = ft_calloc(2, sizeof(char *));
+		if (!str)
+			return (NULL);
+		if (s[0] == '\0')
+			str[0] = NULL;
+		str[0] = ft_strdup(s);
+		return (str);
+	}
 	arrcnt = ft_wrdcnt(s, c);
 	if (arrcnt == 0)
-		return (NULL);
+	{
+		str = ft_calloc(1, sizeof(char *));
+		return (str);
+	}
 	aux = (char *)s;
 	str = (char **)ft_calloc((arrcnt + 1), sizeof(char *));
 	if (!str)
 		return (NULL);
-	return (ft_split2(c, str, aux, arrcnt));
+	return (ft_split_stuff(c, str, aux, arrcnt));
 }
 // #include <stdio.h>
 // int main()
