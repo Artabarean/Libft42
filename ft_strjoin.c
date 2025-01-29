@@ -6,7 +6,7 @@
 /*   By: atabarea <atabarea@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:24:03 by atabarea          #+#    #+#             */
-/*   Updated: 2025/01/27 10:24:04 by atabarea         ###   ########.fr       */
+/*   Updated: 2025/01/29 11:40:15 by atabarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	char	*memrsv;
 
 	i = 0;
-	memrsv = malloc(strlen(s1) + strlen(s2) * sizeof(char) + 1);
+	if (!s1 || !s2)
+		return (NULL);
+	memrsv = malloc(ft_strlen(s1) + ft_strlen(s2) * sizeof(char) + 1);
 	if (memrsv == NULL)
 		return (NULL);
 	while (*s1 != '\0')
