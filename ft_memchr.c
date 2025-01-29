@@ -6,7 +6,7 @@
 /*   By: atabarea <atabarea@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 11:03:32 by atabarea          #+#    #+#             */
-/*   Updated: 2025/01/27 11:41:28 by atabarea         ###   ########.fr       */
+/*   Updated: 2025/01/29 11:18:01 by atabarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	{
 		if (p[i] == cr)
 		{
-			return ((const void *)&p[i]);
+			return ((void *)&p[i]);
 		}
 		i++;
 	}

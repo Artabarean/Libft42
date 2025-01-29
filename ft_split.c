@@ -6,7 +6,7 @@
 /*   By: atabarea <atabarea@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:15:09 by atabarea          #+#    #+#             */
-/*   Updated: 2025/01/28 15:48:32 by atabarea         ###   ########.fr       */
+/*   Updated: 2025/01/29 09:22:50 by atabarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ static char	*ft_createstr(char const *s, char c, size_t len)
 	char	*str;
 	size_t	i;
 
+	if (!s)
+		return (NULL);
 	str = ft_calloc(len + 1, sizeof(char));
 	if (!str)
 		return (NULL);
@@ -59,13 +61,16 @@ static char	*ft_createstr(char const *s, char c, size_t len)
 
 static char	**ft_free_array(char **liberated, size_t size)
 {
-	while (size)
+	size_t	index;
+
+	index = 0;
+	while (index < size)
 	{
-		free(liberated[size]);
-		size--;
+		free(liberated[index]);
+		index++;
 	}
 	free(liberated);
-	return (liberated);
+	return (NULL);
 }
 
 char	**ft_split(char const *s, char c)
@@ -81,16 +86,19 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	i = 0;
 	ptr = s;
+	while (*ptr == c)
+		ptr++;
 	while (i < ft_wrdcnt(s, c))
 	{
-		while (*ptr == c)
-			ptr++;
 		result[i] = ft_createstr(ptr, c, ft_lttrcnt(ptr, c));
 		if (!result[i])
-			return (ft_free_array(result, i), NULL);
+			return (ft_free_array(result, i));
 		ptr += ft_lttrcnt(ptr, c);
+		while (*ptr == c)
+			ptr++;
 		i++;
 	}
+	result[i] = NULL;
 	return (result);
 }
 // #include <stdio.h>
