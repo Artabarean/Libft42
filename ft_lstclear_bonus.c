@@ -6,7 +6,7 @@
 /*   By: atabarea <atabarea@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 12:16:44 by atabarea          #+#    #+#             */
-/*   Updated: 2025/01/30 13:19:53 by atabarea         ###   ########.fr       */
+/*   Updated: 2025/01/30 14:20:08 by atabarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
 	t_list	*aux;
 	t_list	*next;
+
 	if (!lst)
 		return ;
 	aux = *lst;

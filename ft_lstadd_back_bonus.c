@@ -6,7 +6,7 @@
 /*   By: atabarea <atabarea@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 10:55:06 by atabarea          #+#    #+#             */
-/*   Updated: 2025/01/30 11:30:15 by atabarea         ###   ########.fr       */
+/*   Updated: 2025/01/30 14:11:16 by atabarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,4 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		current = current->next;
 	}
 	current->next = new;
-	new->next = NULL;
 }

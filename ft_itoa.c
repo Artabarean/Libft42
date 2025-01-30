@@ -6,7 +6,7 @@
 /*   By: atabarea <atabarea@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:21:55 by atabarea          #+#    #+#             */
-/*   Updated: 2025/01/30 13:19:38 by atabarea         ###   ########.fr       */
+/*   Updated: 2025/01/30 14:02:19 by atabarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static size_t	ft_nbrcnt(int n)
 	return (len);
 }
 
-char	*ft_itoa_int_min(int n)
+char	*ft_itoa_int_min(void)
 {
 	char	*str;
 
@@ -46,7 +46,7 @@ char	*ft_itoa(int n)
 	int		len;
 
 	if (n == (int)-2147483648)
-		return (ft_itoa_int_min(n));
+		return (ft_itoa_int_min());
 	len = ft_nbrcnt(n);
 	strl = malloc(sizeof(char) * (len + 1));
 	if (!strl)
