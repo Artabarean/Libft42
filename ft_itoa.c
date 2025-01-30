@@ -6,7 +6,7 @@
 /*   By: atabarea <atabarea@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 10:21:55 by atabarea          #+#    #+#             */
-/*   Updated: 2025/01/29 09:49:22 by atabarea         ###   ########.fr       */
+/*   Updated: 2025/01/30 13:19:38 by atabarea         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,7 @@ char	*ft_itoa_int_min(int n)
 {
 	char	*str;
 
-	if (n == (int)-2147483648)
-		str = ft_strdup("-2147483648");
+	str = ft_strdup("-2147483648");
 	if (!str)
 		return (NULL);
 	return (str);
