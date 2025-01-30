@@ -6,7 +6,7 @@
 #    By: atabarea <atabarea@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/29 11:11:19 by atabarea          #+#    #+#              #
-#    Updated: 2025/01/29 13:51:57 by atabarea         ###   ########.fr        #
+#    Updated: 2025/01/30 12:52:41 by atabarea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,13 +28,13 @@ OBJ = $(SRC:.c=.o)
 INCLUDE = libft.h
 BONUSSRC = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c\
 		ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c\
-		ft_lstclear_bonus.c ft_lstiter_bonus.c
+		ft_lstclear_bonus.c #ft_lstiter_bonus.c ft_lst_map_bonus.c
+BONUSOBJ = $(BONUSSRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	ar rcs $(NAME) $(OBJ) 
-# AR to compile a library with the objects passed
-# RCS are flaggs -
+
 bonus: $(OBJ) $(BONUSOBJ)
 	ar rcs $(NAME) $(OBJ) $(BONUSOBJ)
 
@@ -49,4 +49,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: clean fclean re
+.PHONY: clean fclean re bonus
