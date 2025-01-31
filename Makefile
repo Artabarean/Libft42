@@ -6,7 +6,7 @@
 #    By: atabarea <atabarea@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/01/29 11:11:19 by atabarea          #+#    #+#              #
-#    Updated: 2025/01/30 12:52:41 by atabarea         ###   ########.fr        #
+#    Updated: 2025/01/31 11:35:48 by atabarea         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ OBJ = $(SRC:.c=.o)
 INCLUDE = libft.h
 BONUSSRC = ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c\
 		ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c\
-		ft_lstclear_bonus.c #ft_lstiter_bonus.c ft_lst_map_bonus.c
+		ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
 BONUSOBJ = $(BONUSSRC:.c=.o)
 all: $(NAME)
 
